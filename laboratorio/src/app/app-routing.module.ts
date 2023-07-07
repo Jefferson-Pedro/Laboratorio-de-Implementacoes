@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { CalendarComponent } from './fullcalendar/fullcalendar-component/calendar.component';
 
+const routes: Routes = [
 
+  {path: 'calendar', component: CalendarComponent},
+  
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }
