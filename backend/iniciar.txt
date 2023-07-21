@@ -1,0 +1,3 @@
+ COmando para startar banco de dados Json
+ 
+  npx json-server --watch db.json

@@ -1,0 +1,20 @@
+{
+    "events": [
+      {
+        "id": 1,
+        "title": "Evento de testes 1", 
+        "color":"#ff0000",
+        "date": "2023-06-11"
+      },
+      {
+        "id": 2,
+        "title": "Evento de testes 2", 
+        "date": "2023-06-15"
+      },
+      {
+        "id": 3,
+        "title": "Evento de testes 3", 
+        "date": "2023-05-25"
+      }
+    ]
+  }
