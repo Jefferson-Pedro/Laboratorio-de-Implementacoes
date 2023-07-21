@@ -10,7 +10,7 @@ export class CalendarService {
 
   baseUrl = 'http://localhost:3000/events';
 
-  constructor( private http: HttpClient) {}
+  constructor(private snack: MatSnackBar, private http: HttpClient) {}
 
   read(): Observable<Event[]>{
     return this.http.get<Event[]>(this.baseUrl);

@@ -1,3 +1,4 @@
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarComponent } from './calendar.component';
@@ -19,7 +20,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CalendarRoutingModule,
     MatToolbarModule,
     FullCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
   ],
   exports: [CalendarComponent]
 })
