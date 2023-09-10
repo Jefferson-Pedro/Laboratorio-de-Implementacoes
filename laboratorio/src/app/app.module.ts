@@ -7,12 +7,21 @@ import { CalendarModule } from './calendar/calendar.module';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard-2/dashboard.component';
+import { DashboardMaterialComponent } from './dashboard-material/dashboard-material.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    DashboardMaterialComponent
 
   ],
   imports: [
@@ -20,7 +29,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     CalendarModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
