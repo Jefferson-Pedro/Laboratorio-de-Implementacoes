@@ -7,8 +7,11 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
+import { CalendarService } from '../../services/calendar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CadastroEventoComponent } from '../../dialog/cadastro-evento/cadastro-evento.component';
 
-import { CalendarService } from './calendar.service';
+
 
 @Component({
   selector: 'app-calendar',
@@ -17,7 +20,8 @@ import { CalendarService } from './calendar.service';
 })
 export class CalendarComponent {
 
-  constructor(private service:CalendarService){}
+  constructor(private service:CalendarService,
+              private dialog: MatDialog){}
 
   ngOnInit(): void {
     this.service.read().subscribe(
@@ -29,6 +33,7 @@ export class CalendarComponent {
   }
 
   calendarOptions: CalendarOptions = {
+    themeSystem: 'bootstrap5',
     initialView: 'dayGridMonth',
     locale: ptLocale,
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, ],
@@ -50,6 +55,9 @@ export class CalendarComponent {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
   handleDateClick(arg) {
+    console.log('Argumento:',arg);
     alert('Clicado! ' + arg.dateStr + arg);
+    const dialogRef = this.dialog.open(CadastroEventoComponent);
+    
   }
 }
