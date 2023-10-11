@@ -10,6 +10,7 @@ import listPlugin from '@fullcalendar/list';
 import { CalendarService } from '../../services/calendar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CadastroEventoComponent } from '../../dialog/cadastro-evento/cadastro-evento.component';
+import { Reminder } from '../../model/Reminder';
 
 
 
@@ -20,20 +21,24 @@ import { CadastroEventoComponent } from '../../dialog/cadastro-evento/cadastro-e
 })
 export class CalendarComponent {
 
+  reminder: Reminder[];
+
   constructor(private service:CalendarService,
               private dialog: MatDialog){}
 
   ngOnInit(): void {
-    this.service.read().subscribe(
-      (events) => {
-        console.log("Carregando dados!");
-        console.log(events);
-        this.calendarOptions.events = events;
-     });   
+    // this.service.read().subscribe(
+    //   (events) => {
+    //     console.log("Carregando dados!");
+    //     console.log(events);
+    //     this.calendarOptions.events = events;
+    //  });   
+    this.listReal();
+
   }
 
   calendarOptions: CalendarOptions = {
-    themeSystem: 'bootstrap5',
+    themeSystem: 'standard',
     initialView: 'dayGridMonth',
     locale: ptLocale,
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, ],
@@ -58,6 +63,18 @@ export class CalendarComponent {
     console.log('Argumento:',arg);
     alert('Clicado! ' + arg.dateStr + arg);
     const dialogRef = this.dialog.open(CadastroEventoComponent);
-    
+  }
+
+  public listReal(){
+
+    this.service.list().subscribe({
+      next: (res: any) => {
+        console.log('Resposta do servidor:',res)
+        this.calendarOptions.events = res;
+      }, 
+      error: (err: any)=> {
+          console.log('Vixe, deu ruim!');
+      },
+    });
   }
 }

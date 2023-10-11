@@ -12,7 +12,7 @@ main {
   }
   
   div {
-    background-color: lightblue;
+    background-color: rgba(115, 115, 115, 0.292);
     border-radius: 10px;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -20,6 +20,7 @@ main {
   
   div.box-1 {
     grid-area: box-1;
+     width: 70%;
   }
   
   div.box-2 {
@@ -37,4 +38,4 @@ main {
   div.box-5 {
     grid-area: box-5;
   }
-  
+

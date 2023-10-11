@@ -7,8 +7,6 @@ import { CalendarModule } from './calendar-module/calendar.module';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard-2/dashboard.component';
-import { DashboardMaterialComponent } from './dashboard-material/dashboard-material.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -20,8 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent,
-    DashboardMaterialComponent
+
 
   ],
   imports: [

@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CalendarComponent } from './calendar-module/components/calendar/calendar.component';
 import { DashboardComponent } from './dashboard-module/components/dashboard/dashboard.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, 
 
