@@ -3,5 +3,5 @@ export interface Reminder {
     titulo: string,
     descricao: string;
     dataEvento: Date;
-    idProfile: number;
+    categoria: string
   }

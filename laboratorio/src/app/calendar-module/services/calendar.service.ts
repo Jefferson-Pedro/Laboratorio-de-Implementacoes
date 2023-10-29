@@ -11,11 +11,12 @@ import { Reminder } from '../model/Reminder';
 export class CalendarService {
 
   apiUrl = 'http://localhost:3000/events';
-
+  
   constructor(private snack: MatSnackBar, private http: HttpClient) {}
 
   public list() {
-    const url = `${environment.baseUrl}/reminder/all`;
+    //const url = `${environment.baseUrl}/reminder/all`;
+    const url = this.apiUrl;
 
     return this.http.get<Reminder[]>(url).pipe(first());
   }

@@ -61,7 +61,7 @@ export class CalendarComponent {
 
   handleDateClick(arg) {
     console.log('Argumento:',arg);
-    alert('Clicado! ' + arg.dateStr + arg);
+    //alert('Clicado! ' + arg.dateStr + arg);
     const dialogRef = this.dialog.open(CadastroEventoComponent);
   }
 
