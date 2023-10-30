@@ -17,22 +17,23 @@ export class CadastroEventoComponent {
   protected form = this.buildForm();
 
   protected reminder:Reminder[] = [];
-  protected colors: String[] = ['A Fazer', 'Fazendo', 'Pendente', 'Concluido'];
 
-  constructor(){}
+  constructor(){
+    this.form.valueChanges.subscribe(console.log);
+  }
 
    private buildForm() {
     return this.formBuilder.group({    
       idReminder:[null],
       titulo: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.minLength(3)]],
       descricao: ['', [Validators.required, Validators.minLength(14)]],
       dataEvento: [new Date(), [Validators.required]],
       categoria: ['', [Validators.required]],
     });
   }
 
-  private fillEventForms(reminder: Reminder) {
-    //PREENCHE OS CAMPOS DO CADASTRO DE EVENTOS
+  private fillEventForms(reminder: Reminder) {    //PREENCHE OS CAMPOS DO CADASTRO DE EVENTOS
     this.form.patchValue({
       titulo: reminder.titulo,
       descricao: reminder.descricao,
@@ -43,9 +44,30 @@ export class CadastroEventoComponent {
 
 
   onSubmit(){
+    console.log(this.form.value);
+
     this.alertService.onSucess(
       'Sucesso', 
       'Seu novo evento foi cadastrado!'
     )
   }
+
+  protected categories = [
+    {
+      title: 'Não iniciado',
+      color: '#808080'
+    },
+    {
+      title: 'Pendente',
+      color: '#ffa500'
+    },
+    {
+      title: 'Em andamento',
+      color: '#0000ff'
+    },
+    {
+      title: 'Concluído',
+      color: '#008000'
+    },
+  ];
 }

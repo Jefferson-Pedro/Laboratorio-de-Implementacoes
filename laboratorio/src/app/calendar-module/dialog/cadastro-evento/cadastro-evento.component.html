@@ -1,9 +1,8 @@
 <div class="container">
-    <mat-toolbar class="title">
-        Genrenciar Eventos
-    </mat-toolbar>
-    
         <form class="form-container p-3" [formGroup]="form">
+          <mat-toolbar class="title">
+            Genrenciar Eventos
+        </mat-toolbar>
             <div class="row ">
                 <mat-form-field class="col-12">
                   <mat-label>Nome do Evento</mat-label>
@@ -39,15 +38,35 @@
               </mat-form-field>
 
               <mat-form-field class="col-4">
-                <mat-label>Categoria</mat-label>
+                <mat-label> Categoria </mat-label>
+                <mat-icon matSuffix class="darkgrey-icon">event</mat-icon>
                 <mat-select formControlName="categoria">
-                  <mat-option *ngFor="let color of colors" [value]="color">
-                    <mat-icon matSuffix>circle</mat-icon>{{ color }}
+                  <mat-select-trigger>
+                    <mat-icon [style.color]="form.controls.categoria.value?.['color']"> circle </mat-icon>
+                     {{form.controls.categoria.value?.['title']}}
+                  </mat-select-trigger>
+                  <mat-option [value]="'#808080'">
+                    <mat-icon class="darkgrey-icon"> circle </mat-icon>
+                    Não iniciado
+                  </mat-option>
+              
+                  <mat-option [value]="'#ffa500'">
+                    <mat-icon class="orange-icon"> circle </mat-icon>
+                    Pendente
+                  </mat-option>
+              
+                  <mat-option [value]="'#0000ff'">
+                    <mat-icon class="blue-icon"> circle </mat-icon>
+                    Em andamento
+                  </mat-option>
+              
+                  <mat-option [value]="'#008000'">
+                    <mat-icon class="green-icon"> circle </mat-icon>
+                    Concluído
                   </mat-option>
                 </mat-select>
-              
-                <mat-error>A categoria é obrigatória</mat-error>
               </mat-form-field>
+              
       
               <mat-form-field class="example-full-width">
                 <mat-label>Descrição do Evento</mat-label>
@@ -69,6 +88,5 @@
               </div>
     
             </div>
-        </form>
-      
+          </form>    
 </div>
