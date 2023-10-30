@@ -24,6 +24,12 @@ export class CalendarService {
   read(): Observable<Event[]>{
     return this.http.get<Event[]>(this.apiUrl);
   }
+
+  post(reminder: Reminder): Observable<Reminder[]>{
+    const url = this.apiUrl;
+
+    return this.http.post<Reminder[]>(url, reminder);
+  }
   
   
 }

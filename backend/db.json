@@ -2,25 +2,33 @@
   "events": [
     {
       "id": 1,
-      "title": "Evento de testes 1", 
-      "color":"#ff0000",
+      "title": "Evento de testes 1",
+      "color": "#ff0000",
       "date": "2023-11-29"
     },
     {
       "id": 2,
-      "title": "Evento de testes 2", 
+      "title": "Evento de testes 2",
       "date": "2023-10-15"
     },
     {
       "id": 3,
-      "title": "Evento de testes 3", 
+      "title": "Evento de testes 3",
       "date": "2023-10-25"
     },
     {
       "id": 4,
-      "title": "Evento de testes 4", 
+      "title": "Evento de testes 4",
       "descricao": "Esta é uma mera descrição do evento",
       "date": "2023-09-27"
+    },
+    {
+      "titulo": "Parabéns o novo evento foi criado com sucesso! UAU, nem acredito 🥺",
+      "email": "exemple@exemple.com",
+      "descricao": "Caraca, meu irmão olha eu no BD!",
+      "dataEvento": "2023-10-31T23:18:40.036Z",
+      "categoria": "#808080",
+      "id": 5
     }
   ]
 }

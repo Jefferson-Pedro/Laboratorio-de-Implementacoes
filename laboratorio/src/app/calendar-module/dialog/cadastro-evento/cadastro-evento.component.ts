@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/shared-module/services/alert.service';
 import { Reminder } from '../../model/Reminder';
+import { CalendarService } from '../../services/calendar.service';
 
 
 
@@ -14,11 +15,13 @@ export class CadastroEventoComponent {
 
   private formBuilder = inject(NonNullableFormBuilder);
   private alertService = inject(AlertService);
+  private calendarService = inject(CalendarService);
   protected form = this.buildForm();
 
   protected reminder:Reminder[] = [];
 
   constructor(){
+    this.calendarService.list();
     this.form.valueChanges.subscribe(console.log);
   }
 
@@ -44,12 +47,24 @@ export class CadastroEventoComponent {
 
 
   onSubmit(){
-    console.log(this.form.value);
+    const form = this.form.getRawValue();
+    this.calendarService.post(form).subscribe({
+      next: (res) => {
+        this.alertService.onSucess(
+          'Sucesso', 
+          'Seu novo evento foi cadastrado!'
+        )
+        console.log(res);
+      },
+      error: (err) => {
+        this.alertService.onError(
+          'Ocorreu um erro para cadastrar o novo evento!'
+        )
+        console.log(err);
+      },
+    });
 
-    this.alertService.onSucess(
-      'Sucesso', 
-      'Seu novo evento foi cadastrado!'
-    )
+    
   }
 
   protected categories = [
