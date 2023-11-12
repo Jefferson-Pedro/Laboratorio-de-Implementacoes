@@ -1,8 +1,10 @@
+import { Profile } from "./Profile";
+
 export interface Reminder {
-    idReminder: number;
-    titulo: string,
-    email: string,
-    descricao: string;
-    dataEvento: Date;
-    categoria: string
-  }
+  idReminder: number;
+  titulo: string;
+  descricao: string;
+  dataEvento: Date;
+  categoria: string;
+  idProfile: Profile;
+}

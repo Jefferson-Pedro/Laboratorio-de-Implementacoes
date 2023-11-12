@@ -10,26 +10,24 @@ import { Reminder } from '../model/Reminder';
 })
 export class CalendarService {
 
-  apiUrl = 'http://localhost:3000/events';
+  //apiUrl = 'http://localhost:3000/events';
   
   constructor(private snack: MatSnackBar, private http: HttpClient) {}
 
   public list() {
-    //const url = `${environment.baseUrl}/reminder/all`;
-    const url = this.apiUrl;
+    const url = `${environment.baseUrl}/reminder/all`;
+    //const url = this.apiUrl;
 
     return this.http.get<Reminder[]>(url).pipe(first());
   }
 
-  read(): Observable<Event[]>{
+  /*read(): Observable<Event[]>{
     return this.http.get<Event[]>(this.apiUrl);
-  }
+  }*/
 
-  post(reminder: Reminder): Observable<Reminder[]>{
-    const url = this.apiUrl;
-
-    return this.http.post<Reminder[]>(url, reminder);
+  post(reminder: Reminder): Observable<Reminder>{
+    //const url = this.apiUrl;
+    const url = `${environment.baseUrl}/reminder/new`;
+    return this.http.post<Reminder>(url, reminder);
   }
-  
-  
 }

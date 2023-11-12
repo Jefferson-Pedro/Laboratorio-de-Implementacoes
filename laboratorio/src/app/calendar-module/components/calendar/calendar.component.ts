@@ -12,8 +12,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { CadastroEventoComponent } from '../../dialog/cadastro-evento/cadastro-evento.component';
 import { Reminder } from '../../model/Reminder';
 
-
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -33,7 +31,7 @@ export class CalendarComponent {
     //     console.log(events);
     //     this.calendarOptions.events = events;
     //  });   
-    this.listReal();
+    this.listEvents(); 
 
   }
 
@@ -54,7 +52,7 @@ export class CalendarComponent {
     dayMaxEvents: true,
 
     dateClick: this.handleDateClick.bind(this),
-    events: []
+    events: [  { title: 'event 1', date: '2023-11-01' , eventColor: '#378006'}]
   };
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
@@ -62,15 +60,27 @@ export class CalendarComponent {
   handleDateClick(arg) {
     console.log('Argumento:',arg);
     //alert('Clicado! ' + arg.dateStr + arg);
-    const dialogRef = this.dialog.open(CadastroEventoComponent);
+    const dialogRef = this.dialog.open(CadastroEventoComponent, {
+      width: '45%'
+    });
   }
 
-  public listReal(){
+  public listEvents(){
 
     this.service.list().subscribe({
-      next: (res: any) => {
-        console.log('Resposta do servidor:',res)
-        this.calendarOptions.events = res;
+      next: (res: any[]) => {
+        console.log('Resposta do servidor:',res);
+
+        // Mapeia os objetos Reminder para o formato esperado pelo FullCalendar
+        const events = res.map((reminder) => ({
+          id: reminder.idReminder,
+          title: reminder.titulo,
+          description: reminder.descricao,
+          start: new Date(reminder.dataEvento), // Converte a data para o formato apropriado
+          backgroundColor: reminder.categoria, // A cor de fundo do evento é baseada na categoria
+        }));
+
+        this.calendarOptions.events = events;
       }, 
       error: (err: any)=> {
           console.log('Vixe, deu ruim!');

@@ -6,7 +6,10 @@
 
 .container{
     display: flex;
-    /*max-width: 50%;*/
+}
+
+textarea {
+  resize: none;
 }
 
 .darkgrey-icon {
